@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulář</title>
+</head>
+<body>
+
+    <div class="formular-box">
+        <h1>Nastavení hesla</h1>
+        <div id="formular">
+            <p>Zadejte nové heslo: </p>
+            <input type="password" id="heslo1" placeholder="heslo">
+            <p>Zadejte stejne heslo ještě jednou: </p>
+            <input type="password" id="heslo2" placeholder="helso"><br><br>
+            <button onclick="kontrola()">accept</button>
+            <p id="hlaska"></p>
+    
+        </div>
+        <p id="uspech"></p>
+    </div>
+
+    <script>
+        let formular = document.getElementById("formular");
+        let uspech = document.getElementById("uspech");
+        let hlaska = document.getElementById("hlaska");
+        
+        
+        function kontrola(){
+            let heslo1 = document.getElementById("heslo1").value;
+            let heslo2 = document.getElementById("heslo2").value;
+            if (heslo1.length >=8)
+            {
+                if (heslo1 == heslo2)
+                {
+                    formular.style.display = "none";
+                    uspech.textContent = "Heslo bylo úspěšně nastaveno";
+                }
+                else
+                {
+                    hlaska.textContent = "Zadaná hesla se neshodují!";
+                }
+            }
+            else
+                hlaska.textContent = "Zadané heslo je příliš krátké!";
+            
+
+        }
+
+    </script>
+
+    <style>
+        body{
+            background-image: url(https://wallpapercave.com/wp/wp10520496.jpg);
+            background-color: #182026;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            height: 100dvh;
+            margin: 0;
+            padding: 12px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: rgb(255, 196, 0);
+        }
+        .formular-box{
+            background: rgba(183, 182, 182, 0.42);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(255, 254, 254, 0.415);
+            backdrop-filter: blur(5.5px);
+            -webkit-backdrop-filter: blur(5.5px);
+            border: 1px solid rgba(254, 254, 254, 0.49);
+            padding: 15px;
+        }
+        #formular{
+            text-align: center;
+        }
+        h1{
+            margin: 0 0 12px;
+        }
+        #formular > p:not(#hlaska){
+            margin: 10px 0 5px;
+        }
+        #formular br{
+            display: none;
+        }
+        #formular input{
+            display: block;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        #formular button{
+            margin-top: 12px;
+        }
+        #hlaska:empty,
+        #uspech:empty{
+            display: none;
+        }
+        #hlaska{
+            margin: 10px 0 0;
+        }
+        #hlaska{
+            color: rgb(255, 44, 44);
+            font-size: large;
+            font-weight: bold;
+        }
+        #uspech{
+            margin: 12px 0 0;
+            text-align: center;
+        }
+        @media (max-height: 420px){
+            body{
+                padding: 6px;
+            }
+            h1{
+                margin-bottom: 6px;
+                font-size: 1.25rem;
+            }
+            #formular > p:not(#hlaska){
+                margin: 5px 0 3px;
+            }
+            #formular button{
+                margin-top: 6px;
+            }
+        }
+    </style>
+</body>
+</html>
